@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Comment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +87,14 @@ Route::get('/', function () {
         echo '留言: '.$comment->content."<br>";
         echo '--------------------------'.'<br>';
     }
+
+    $comment = Comment::find(4);
+    echo $comment->content.'<br>';
+    echo '******************'.'<br>';
+    $post = $comment->post()->first();
+    echo $post->id.'<br>';
+    echo $post->title.'<br>';
+    echo $post->content.'<br>';
 });
 
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
