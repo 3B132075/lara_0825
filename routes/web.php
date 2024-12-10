@@ -42,8 +42,15 @@ Route::get('/', function () {
     // }
     // dd($posts);
 
-    $posts = Post::where('id', '<', 10)->orderBy('id','DESC')->get();
-    dd($posts);
+    // $posts = Post::where('id', '<', 10)->orderBy('id','DESC')->get();
+    // dd($posts);
+
+    $post = Post::find(1);
+    $post->update([
+        'title'=>'updated title',
+        'content'=>'updated content',
+    ]);
+    return 'Updated!';
 });
 
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
