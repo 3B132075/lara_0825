@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return redirect(route('posts.index'));
+    $post = new Post();
+    $post->title="test_title";
+    $post->content="test_content";
+    $post->save();
+    return 'Saved, OK!';
 });
+
+Route::get('posts',[PostController::class, 'index'])->name('posts.index');
