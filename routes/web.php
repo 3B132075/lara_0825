@@ -72,7 +72,10 @@ Route::get('/', function () {
     dd($featuredPosts); 
 
     $fourthPost = Post::find(4); 
-    dd($fourthPost); 
+    dd($fourthPost);
+    
+    $lastPost = Post::orderBy('id',  'DESC')->first(); 
+    dd($lastPost);
 
 });
 
