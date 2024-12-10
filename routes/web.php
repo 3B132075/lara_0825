@@ -65,18 +65,27 @@ Route::get('/', function () {
     // Post::destroy(3, 5, 7);
     // return 'Destroyed!';
 
-    $allPosts = Post::all(); 
-    dd($allPosts);
+    // $allPosts = Post::all(); 
+    // dd($allPosts);
 
-    $featuredPosts = Post::where('is_feature',  1)->get(); 
-    dd($featuredPosts); 
+    // $featuredPosts = Post::where('is_feature',  1)->get(); 
+    // dd($featuredPosts); 
 
-    $fourthPost = Post::find(4); 
-    dd($fourthPost);
+    // $fourthPost = Post::find(4); 
+    // dd($fourthPost);
     
-    $lastPost = Post::orderBy('id',  'DESC')->first(); 
-    dd($lastPost);
+    // $lastPost = Post::orderBy('id',  'DESC')->first(); 
+    // dd($lastPost);
 
+    $post = Post::find(6);
+    echo '標題: '.$post->title.'<br>';
+    echo '內容: '.$post->content.'<br>';
+    echo '--------------------------'.'<br>';
+    $comments = $post->comments()->get();
+    foreach ($comments as $comment){
+        echo '留言: '.$comment->content."<br>";
+        echo '--------------------------'.'<br>';
+    }
 });
 
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
