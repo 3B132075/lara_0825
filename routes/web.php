@@ -20,12 +20,17 @@ Route::get('/', function () {
     // $post->content="test_content";
     // $post->save();
 
-    Post::create([
-        'title'=>'test title2',
-        'content'=>'test content2',
-    ]);
-    
-    return 'Saved, OK!';
+    // Post::create([
+    //     'title'=>'test title2',
+    //     'content'=>'test content2',
+    // ]);
+
+    // return 'Saved, OK!';
+
+    $post = Post::find(1);
+    echo '標題: '.$post->title.'<br>';
+    echo '內容: '.$post->content.'<br>';
+    dd($post);
 });
 
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
